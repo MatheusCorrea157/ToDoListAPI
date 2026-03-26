@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using System;
+using ToDoList.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +21,8 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader()
               .AllowAnyMethod());
 });
-//builder.Services.AddDbContext<AppDbContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<AppDbContext>(options =>
+   options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
 // Customização da resposta de validação (Data Annotations)
